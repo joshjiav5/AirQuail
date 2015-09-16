@@ -192,7 +192,7 @@
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hop-pQ-P5n">
                                                     <rect key="frame" x="0.0" y="10" width="600" height="199"/>
-                                                    <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                 </view>
                                             </subviews>
                                             <constraints>
@@ -218,6 +218,56 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="55e-iC-5D5" id="DXj-9T-f4j">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="209"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ceP-V3-hNP">
+                                                    <rect key="frame" x="0.0" y="10" width="600" height="199"/>
+                                                    <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="ceP-V3-hNP" secondAttribute="bottom" id="OSU-lr-r0e"/>
+                                                <constraint firstItem="ceP-V3-hNP" firstAttribute="leading" secondItem="DXj-9T-f4j" secondAttribute="leading" id="Qdi-40-tOl"/>
+                                                <constraint firstAttribute="trailing" secondItem="ceP-V3-hNP" secondAttribute="trailing" id="cAO-jk-dOn"/>
+                                                <constraint firstItem="ceP-V3-hNP" firstAttribute="top" secondItem="DXj-9T-f4j" secondAttribute="top" constant="10" id="oQk-fE-V4f"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="sCL-b6-urn">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="sCL-b6-urn" id="vTa-5x-wJk">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u9x-FL-7qe">
+                                                    <rect key="frame" x="0.0" y="10" width="600" height="199"/>
+                                                    <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="u9x-FL-7qe" firstAttribute="top" secondItem="vTa-5x-wJk" secondAttribute="top" constant="10" id="7Zd-GZ-wMX"/>
+                                                <constraint firstAttribute="trailing" secondItem="u9x-FL-7qe" secondAttribute="trailing" id="LgF-ze-deF"/>
+                                                <constraint firstItem="u9x-FL-7qe" firstAttribute="leading" secondItem="vTa-5x-wJk" secondAttribute="leading" id="PFK-FR-TEg"/>
+                                                <constraint firstAttribute="bottom" secondItem="u9x-FL-7qe" secondAttribute="bottom" id="qoU-EC-2e3"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="dGp-7Y-PRe">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dGp-7Y-PRe" id="b4w-ph-Jke">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sGn-Vr-zPr">
+                                                    <rect key="frame" x="0.0" y="10" width="600" height="199"/>
+                                                    <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="sGn-Vr-zPr" firstAttribute="top" secondItem="b4w-ph-Jke" secondAttribute="top" constant="10" id="34e-yQ-HsZ"/>
+                                                <constraint firstAttribute="trailing" secondItem="sGn-Vr-zPr" secondAttribute="trailing" id="B7c-1m-rga"/>
+                                                <constraint firstItem="sGn-Vr-zPr" firstAttribute="leading" secondItem="b4w-ph-Jke" secondAttribute="leading" id="YP2-9e-CgT"/>
+                                                <constraint firstAttribute="bottom" secondItem="sGn-Vr-zPr" secondAttribute="bottom" id="eSy-Ur-eh1"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="uQr-Q9-IiZ">
@@ -225,6 +275,18 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="uQr-Q9-IiZ" id="Zax-o5-gDW">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="209"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mGD-fl-tvU">
+                                                    <rect key="frame" x="0.0" y="10" width="600" height="199"/>
+                                                    <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="mGD-fl-tvU" firstAttribute="top" secondItem="Zax-o5-gDW" secondAttribute="top" constant="10" id="5HU-4M-RlF"/>
+                                                <constraint firstAttribute="trailing" secondItem="mGD-fl-tvU" secondAttribute="trailing" id="9q3-nq-GCn"/>
+                                                <constraint firstAttribute="bottom" secondItem="mGD-fl-tvU" secondAttribute="bottom" id="Q2k-Cp-64V"/>
+                                                <constraint firstItem="mGD-fl-tvU" firstAttribute="leading" secondItem="Zax-o5-gDW" secondAttribute="leading" id="yhz-KE-w7l"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
