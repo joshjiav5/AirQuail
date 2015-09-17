@@ -10,88 +10,86 @@ import UIKit
 
 class MainTableViewController: UITableViewController {
 
+    @IBOutlet var cells: [UITableViewCell]!
+    @IBOutlet var cellViews: [UIView]!
+    @IBOutlet var dateLabels: [UILabel]!
+    @IBOutlet weak var coReadingLabel: UILabel!
+    @IBOutlet weak var tempReadingLabel: UILabel!
+    @IBOutlet weak var pmReadingLabel: UILabel!
+    @IBOutlet weak var odReadingLabel: UILabel!
+    @IBOutlet weak var methaneReadingLabel: UILabel!
+    @IBOutlet weak var refreshBarButton: UIBarButtonItem!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        self.setupViewStyle()
+        self.updateDatas()
+        refreshBarButton.target = self
+        refreshBarButton.action = "touchRefreshButton:"
+    }
+    
+    func setupViewStyle() {
+        tableView.backgroundView = UIImageView(image: UIImage(named: "background")!)
+        for cell in cells {
+            cell.backgroundView = nil
+            cell.backgroundColor = UIColor.clearColor()
+        }
+        for cellView in cellViews {
+            cellView.backgroundColor = UIColor(white: 0.0, alpha: 0.5)
+        }
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-    // MARK: - Table view data source
-
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Potentially incomplete method implementation.
-        // Return the number of sections.
-        return 0
+    
+    func touchRefreshButton(sender:UIBarButtonItem!) {
+        self.updateDatas()
     }
-
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete method implementation.
-        // Return the number of rows in the section.
-        return 0
+    
+    func updateDatas() {
+        let networkMan = NetworkManager()
+        if let var airData = networkMan.getLastRecord() {
+            for label in dateLabels {
+                if(airData.recordedDate != nil) {
+                    var dateFormatter:NSDateFormatter = NSDateFormatter()
+                    dateFormatter.dateFormat = "MMM dd"
+                    label.text = "\(dateFormatter.stringFromDate(airData.recordedDate!))"
+                } else {
+                    label.text = "--"
+                }
+            }
+            
+            if(airData.coLevel != nil) {
+                self.coReadingLabel.text = "\(airData.coLevel!)"
+            } else {
+                self.coReadingLabel.text = "--"
+            }
+            
+            if(airData.temperature != nil) {
+                self.tempReadingLabel.text = "\(airData.temperature!)"
+            } else {
+                self.tempReadingLabel.text = "--"
+            }
+            
+            if(airData.pmLevel != nil) {
+                self.pmReadingLabel.text = "\(airData.pmLevel!)"
+            } else {
+                self.pmReadingLabel.text = "--"
+            }
+            
+            if(airData.odLevel != nil) {
+                self.odReadingLabel.text = "\(airData.odLevel!)"
+            } else {
+                self.odReadingLabel.text = "--"
+            }
+            
+            if(airData.methaneLevel != nil) {
+                self.methaneReadingLabel.text = "\(airData.methaneLevel!)"
+            } else {
+                self.methaneReadingLabel.text = "--"
+            }
+        }
     }
-
-    /*
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath) as! UITableViewCell
-
-        // Configure the cell...
-
-        return cell
-    }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return NO if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return NO if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

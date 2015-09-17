@@ -73,7 +73,7 @@ class NetworkManager {
         }
         if let recordedDateString = dictData!.objectForKey(dictKey_recordedDate) as? String {
             let dateFormatter: NSDateFormatter = NSDateFormatter()
-            dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss.SSSSSSZ"
+            dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss.SSSSSS"
             airData?.recordedDate = dateFormatter.dateFromString(recordedDateString)
         }
         if let username = dictData!.objectForKey(dictKey_username) as? String {
