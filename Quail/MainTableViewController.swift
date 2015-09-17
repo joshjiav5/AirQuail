@@ -48,47 +48,55 @@ class MainTableViewController: UITableViewController {
         self.updateDatas()
     }
     
-    func updateDatas() {
+    func loadData() -> AirData! {
         let networkMan = NetworkManager()
-        if let var airData = networkMan.getLastRecord() {
-            for label in dateLabels {
-                if(airData.recordedDate != nil) {
-                    var dateFormatter:NSDateFormatter = NSDateFormatter()
-                    dateFormatter.dateFormat = "MMM dd"
-                    label.text = "\(dateFormatter.stringFromDate(airData.recordedDate!))"
-                } else {
-                    label.text = "--"
+        return networkMan.getLastRecord()
+    }
+    
+    func updateDatas() {
+        dispatch_async(dispatch_get_global_queue(Int(QOS_CLASS_USER_INITIATED.value), 0)) { // 1
+            if let var airData = self.loadData() {
+                dispatch_async(dispatch_get_main_queue()) { // 2
+                    for label in self.dateLabels {
+                        if(airData.recordedDate != nil) {
+                            var dateFormatter:NSDateFormatter = NSDateFormatter()
+                            dateFormatter.dateFormat = "MMM dd"
+                            label.text = "\(dateFormatter.stringFromDate(airData.recordedDate!))"
+                        } else {
+                            label.text = "--"
+                        }
+                    }
+                    
+                    if(airData.coLevel != nil) {
+                        self.coReadingLabel.text = "\(airData.coLevel!)"
+                    } else {
+                        self.coReadingLabel.text = "--"
+                    }
+                    
+                    if(airData.temperature != nil) {
+                        self.tempReadingLabel.text = "\(airData.temperature!)"
+                    } else {
+                        self.tempReadingLabel.text = "--"
+                    }
+                    
+                    if(airData.pmLevel != nil) {
+                        self.pmReadingLabel.text = "\(airData.pmLevel!)"
+                    } else {
+                        self.pmReadingLabel.text = "--"
+                    }
+                    
+                    if(airData.odLevel != nil) {
+                        self.odReadingLabel.text = "\(airData.odLevel!)"
+                    } else {
+                        self.odReadingLabel.text = "--"
+                    }
+                    
+                    if(airData.methaneLevel != nil) {
+                        self.methaneReadingLabel.text = "\(airData.methaneLevel!)"
+                    } else {
+                        self.methaneReadingLabel.text = "--"
+                    }
                 }
-            }
-            
-            if(airData.coLevel != nil) {
-                self.coReadingLabel.text = "\(airData.coLevel!)"
-            } else {
-                self.coReadingLabel.text = "--"
-            }
-            
-            if(airData.temperature != nil) {
-                self.tempReadingLabel.text = "\(airData.temperature!)"
-            } else {
-                self.tempReadingLabel.text = "--"
-            }
-            
-            if(airData.pmLevel != nil) {
-                self.pmReadingLabel.text = "\(airData.pmLevel!)"
-            } else {
-                self.pmReadingLabel.text = "--"
-            }
-            
-            if(airData.odLevel != nil) {
-                self.odReadingLabel.text = "\(airData.odLevel!)"
-            } else {
-                self.odReadingLabel.text = "--"
-            }
-            
-            if(airData.methaneLevel != nil) {
-                self.methaneReadingLabel.text = "\(airData.methaneLevel!)"
-            } else {
-                self.methaneReadingLabel.text = "--"
             }
         }
     }
